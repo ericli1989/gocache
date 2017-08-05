@@ -1,0 +1,8 @@
+#Requirement design
+1。support local and cluster mode
+2。support multi-tenant
+3. supprot delete data auto
+4. in cluster mode, we must have some statistics data to help us to debug
+5. performace
+
+#
