@@ -1,0 +1,34 @@
+<seelog type="sync" minlevel="debug" maxlevel="critical">
+    <!-- intervel 单位是毫秒 -->
+    <outputs formatid="main">
+        <rollingfile formatid="main" type="size" filename="../var/log/tsdb-saver.log" maxsize="10000000" maxrolls="3"/>
+        <!-- size 单位是 byte-->
+    </outputs>
+    <formats>
+        <format id="main" format="[%Date %Time] [%LEVEL] [%RelFile] [%Func %Line] [%Msg]%n"/>
+    </formats>
+</seelog>
+
+
+
+<seelog  type="asynctimer" asyncinterval="5000000" minlevel="trace" maxlevel="critical">
+	<outputs formatid="main">
+		<filter levels="debug,info,warn,error,critical">
+            <console />
+        </filter>
+
+		<filter levels="debug,info">
+   		    <buffered size="10000" flushperiod="1000">
+				<rollingfile type="date" filename="log/info.log" datepattern="2006.01.02" maxrolls="3"/>
+			</buffered>
+		</filter>
+		<filter levels="warn,error,critical">
+   		    <buffered size="10000" flushperiod="1000">
+				<rollingfile type="date" filename="log/error.log" datepattern="2006.01.02" maxrolls="3"/>
+			</buffered>
+		</filter>
+	</outputs>
+	<formats>
+         <format id="main" format="[%Level]%Date %Time %File %Func %Line: %Msg%n"/>
+    </formats>
+</seelog>
