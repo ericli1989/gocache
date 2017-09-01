@@ -2,6 +2,7 @@ package main
 
 import (
 	log "github.com/cihub/seelog"
+	"./utils"
 	"flag"
 	"time"
 )
@@ -25,11 +26,21 @@ func main() {
 
 	flag.Parse()
 
-	Conf := config.ParseConfig(*confFile)
+	Conf, err := utils.ParseConfig(*confFile)
+	if err != nil {
+		log.Errorf("parseConfig err, confFile:%v, err:%v", confFile, err)
+		goto out
+	}
 
-	err := initLog(*logFile)
+	err = initLog(*logFile)
 	if err != nil {
 		log.Errorf("initLog fail, err:%v", err)
+		goto out
+	}
+
+	err = utils.InitWebHandler(Conf.Web)
+	if err != nil {
+		log.Errorf("init webhandler err, err:%v", err)
 		goto out
 	}
 

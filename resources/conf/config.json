@@ -1,4 +1,5 @@
 {
+  "deployMode": "local",
   "web": {
     "Ip": "localhost",
     "Port": 8080

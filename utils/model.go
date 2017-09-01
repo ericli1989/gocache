@@ -1,10 +1,15 @@
 package utils
 
+var (
+	GoCacheConfig *Config
+)
+
 type WebConfig struct {
-	Ip		string
-	Port 	int
+	Ip   string
+	Port int
 }
 
 type Config struct {
-	Web		*WebConfig
+	deployMode 	string
+	Web         *WebConfig
 }

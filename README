@@ -1,8 +1,19 @@
 #Requirement design
-1。support local and cluster mode
-2。support multi-tenant
-3. supprot delete data auto
+1. support local and cluster mode
+2. support multi-tenant
+3. supprot delete data auto(ttl)
 4. in cluster mode, we must have some statistics data to help us to debug
 5. performace
 
-#
+#Optional
+1. support persistence
+
+#Todo List
+1. base frame develop , interface , just supoort key value cache
+2. support local mode
+3. support serval cache value. auto delete
+4. optimization
+5. support cluster mode
+6. debug
+7. support persistence *
+8. optimization
